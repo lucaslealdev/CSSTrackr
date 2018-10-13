@@ -15,10 +15,15 @@
 ## How to use
 
 1 - Clone or download the repository and unzip it.
+
 2 - Install composer in your computer if you do not already have it (it is VERY easy I promise) and run the command "composer upgrade" inside the CSSTrackr folder. That command will download the dependencies.
+
 3 - Create a database to store user data, if you do not have it yet. You can find the SQL code to create the two needed tables inside the database.sql file in this repository.
+
 4 - You need to setup your DB connection (edit config.php);
+
 5 - You need to setup your trackers with css selectors (edit config.php);
+
 6 - Include the auto-generated css file in your webpage header:
 ```html
 <link rel="stylesheet" href="csstrackr/csstrackr.css.php" type="text/css" media="all">
