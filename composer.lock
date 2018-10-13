@@ -1,0 +1,42 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "386de6a042ab2b01fcd0446243cafa66",
+    "packages": [
+        {
+            "name": "lucaasleaal/mysqlucas",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucaasleaal/mysqlucas.git",
+                "reference": "2807a32fa15a7ead30386affcbeb7662a2d149f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucaasleaal/mysqlucas/zipball/2807a32fa15a7ead30386affcbeb7662a2d149f0",
+                "reference": "2807a32fa15a7ead30386affcbeb7662a2d149f0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "mysqlucas.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Classe mysqli para execução de consultas com prepared statements",
+            "time": "2018-07-09T12:43:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

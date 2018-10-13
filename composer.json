@@ -1,0 +1,10 @@
+{
+    "require": {
+        "lucaasleaal/mysqlucas": "^1.2"
+    },
+    "autoload":{
+    	"psr-4":{
+    		"trackr\\": "classes/"
+    	}
+    }
+}
