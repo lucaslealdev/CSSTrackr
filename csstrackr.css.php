@@ -2,6 +2,22 @@
 header("Content-type: text/css");
 
 require('config.php');
+require('functions.php');
+
+/*get real user IP*/
+$_SERVER['REMOTE_ADDR'] = getRequestIP();
+
+if(isset($_SERVER['HTTP_USER_AGENT']) && in_array(strtolower($_SERVER['HTTP_USER_AGENT']),$banned_agents)){
+    exit;
+}else if (in_array($_SERVER['REMOTE_ADDR'],$banned_ips)){
+  exit;
+} else {
+  foreach($banned_ips as $ip) {
+    if(eregi($ip,$_SERVER['REMOTE_ADDR'])) {
+      exit;
+    }
+  }
+}
 
 if (!isset($actions)){
   exit;
