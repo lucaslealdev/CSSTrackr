@@ -120,7 +120,7 @@ $banned_agents = array(
     'w3c_validator',
     'wdg_validator',
     'wdg',
-    'zealbot'
+    'zealbot',
     '008',
     'abachobot',
     'accoona-ai-agent',
