@@ -1,11 +1,57 @@
 <?php
+
+/*
+=================
+Here you need to setup your DB connection.
+=================
+*/
+
 define('DB_HOSTNAME','localhost');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','');
 define('DB_DATABASE','csstrackr');
+
+/*
+=================
+Here you need to setup your trackers.
+=================
+*/
+
+$actions = array(
+    'click'=>array(
+        'button#subscribe'=>'User has subscribed',
+        'button#unsub'=>'User has unsubscribed',
+        '.modalclose'=>'User has closed a modal element',
+        'a.modal'=>'User has opened a modal window',
+    ),
+    'hover'=>array(
+        'img'=>'User has hovered an image element',
+    ),
+    'check'=>array(
+        'input[type="checkbox"]'=>'User has checked a checkbox',
+    ),
+    'hoverhold'=>array(
+        'img'=>'User has hovered for', /*will suffix from 1 to 10 seconds*/
+    )
+);
+
+/*
+=================
+If you don't know what
+these two lines below means,
+don't change them.
+=================
+*/
+
 define('DB_PREFIX','');
 define('S','csstrackr'); /*session key*/
 
+/*
+=================
+Only change those configurations below if
+you know what you are doing with your life
+=================
+*/
 
 $banned_ips = array(
     '45.55.201.83',
@@ -248,22 +294,4 @@ $banned_agents = array(
     'zealbot',
     'zspider',
     'zyborg',
-);
-
-$actions = array(
-    'click'=>array(
-        'button#subscribe'=>'User has subscribed',
-        'button#unsub'=>'User has unsubscribed',
-        '.modalclose'=>'User has closed a modal element',
-        'a.modal'=>'User has opened a modal window',
-    ),
-    'hover'=>array(
-        'img'=>'User has hovered an image element',
-    ),
-    'check'=>array(
-        'input[type="checkbox"]'=>'User has checked a checkbox',
-    ),
-    'hoverhold'=>array(
-        'img'=>'User has hovered for', /*will suffix from 1 to 10 seconds*/
-    )
 );

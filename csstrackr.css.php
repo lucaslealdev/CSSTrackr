@@ -3,25 +3,40 @@ header("Content-type: text/css");
 
 require('config.php');
 
-foreach($actions['click'] as $selector=>$value){?>
+if (!isset($actions)){
+  exit;
+}
+
+if (isset($actions['click']) && !empty($actions['click'])){
+  foreach($actions['click'] as $selector=>$value){?>
     <?= $selector?>:active::after {
         content: url("index.php?action=click&value=<?= urlencode($value)?>");
     }
 <?php }
+}
 
-foreach($actions['hover'] as $selector=>$value){?>
+if (isset($actions['hover']) && !empty($actions['hover'])){
+  foreach($actions['hover'] as $selector=>$value){?>
     <?= $selector?>:hover::after {
         content: url("index.php?action=hover&value=<?= urlencode($value)?>");
     }
 <?php }
+}
 
-foreach($actions['check'] as $selector=>$value){?>
+if (isset($actions['check']) && !empty($actions['check'])){
+  foreach($actions['check'] as $selector=>$value){?>
     <?= $selector?>:checked {
         content: url("index.php?action=check&value=<?= urlencode($value)?>");
     }
 <?php }
+}
+
+
+
 $keyframes = 0;
-foreach($actions['hoverhold'] as $selector=>$value){?>
+if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
+  foreach($actions['hoverhold'] as $selector=>$value){?>
+  /* <style> */
     @keyframes keyframe<?= $keyframes?> {
         0% {background-image: none;}
         10% {background-image: url("index.php?action=hover&value=<?= urlencode($value.' 1s')?>")}
@@ -43,12 +58,14 @@ foreach($actions['hoverhold'] as $selector=>$value){?>
         animation-name: keyframe<?= $keyframes?>;
         animation-duration: 10s;
     }
+  /* </style> */
 <?php
-$keyframes++;
+  $keyframes++;
+  }
 }
 
 ?>
-
+/* <style> */
 /** http://browserhacks.com/ **/
 @supports (-webkit-appearance:none) and (not (-ms-ime-align:auto)){
     body::before {
@@ -118,3 +135,4 @@ $keyframes++;
       content: url("index.php?action=viewport&value=xlg");
   }
 }
+/* </style> */
