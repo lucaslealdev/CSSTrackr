@@ -55,6 +55,9 @@ class Action{
 				}
 				break;
 		}
+		if(!empty($this->db->error_mysqlucas)){
+			echo $this->db->error_mysqlucas;exit;
+		}
 
 	}
 }

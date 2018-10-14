@@ -8,23 +8,31 @@ require('functions.php');
 $_SERVER['REMOTE_ADDR'] = getRequestIP();
 
 if(isset($_SERVER['HTTP_USER_AGENT']) && in_array(strtolower($_SERVER['HTTP_USER_AGENT']),$banned_agents)){
-    exit;
+  echo "/*blocked agent*/";
+  exit;
 }else if (in_array($_SERVER['REMOTE_ADDR'],$banned_ips)){
+  echo "/*blocked ip*/";
   exit;
 } else {
   foreach($banned_ips as $ip) {
-    if(eregi($ip,$_SERVER['REMOTE_ADDR'])) {
+    $ip = str_replace(".", "\\.", $ip);
+    $ip = str_replace("*", ".*", $ip);
+    $ip = "/^".$ip."/";
+    if(preg_match($ip, $_SERVER['REMOTE_ADDR'])){
+      echo "/*blocked ip range*/";
       exit;
     }
   }
 }
 
 if (!isset($actions)){
+  echo "/*no actions*/";
   exit;
 }
 
 if (isset($actions['click']) && !empty($actions['click'])){
   foreach($actions['click'] as $selector=>$value){?>
+  /* <style> */
     <?= $selector?>:active::after {
         content: url("index.php?action=click&value=<?= urlencode($value)?>");
     }
@@ -52,7 +60,6 @@ if (isset($actions['check']) && !empty($actions['check'])){
 $keyframes = 0;
 if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
   foreach($actions['hoverhold'] as $selector=>$value){?>
-  /* <style> */
     @keyframes keyframe<?= $keyframes?> {
         0% {background-image: none;}
         10% {background-image: url("index.php?action=hover&value=<?= urlencode($value.' 1s')?>")}
@@ -74,14 +81,13 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
         animation-name: keyframe<?= $keyframes?>;
         animation-duration: 10s;
     }
-  /* </style> */
+
 <?php
   $keyframes++;
   }
 }
 
 ?>
-/* <style> */
 /** http://browserhacks.com/ **/
 @supports (-webkit-appearance:none) and (not (-ms-ime-align:auto)){
     body::before {
@@ -151,4 +157,3 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
       content: url("index.php?action=viewport&value=xlg");
   }
 }
-/* </style> */

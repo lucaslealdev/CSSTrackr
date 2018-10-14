@@ -18,6 +18,7 @@ class Session{
 
 		if (!isset($this->db->insert_id) || empty($this->db->insert_id)){
 			echo $this->db->error_mysqlucas;
+			echo $this->db->mysqli_error;
 			@session_destroy();
 			exit;
 		}else{

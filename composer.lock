@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "386de6a042ab2b01fcd0446243cafa66",
+    "content-hash": "bd968fbded26eeef1448ca2bcd50fa5f",
     "packages": [
         {
             "name": "lucaasleaal/mysqlucas",
-            "version": "1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucaasleaal/mysqlucas.git",
-                "reference": "2807a32fa15a7ead30386affcbeb7662a2d149f0"
+                "reference": "99ec25c4694ac83c19827cea44eb9ddca8ee45dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucaasleaal/mysqlucas/zipball/2807a32fa15a7ead30386affcbeb7662a2d149f0",
-                "reference": "2807a32fa15a7ead30386affcbeb7662a2d149f0",
+                "url": "https://api.github.com/repos/lucaasleaal/mysqlucas/zipball/99ec25c4694ac83c19827cea44eb9ddca8ee45dd",
+                "reference": "99ec25c4694ac83c19827cea44eb9ddca8ee45dd",
                 "shasum": ""
             },
             "type": "library",
@@ -28,13 +28,15 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Classe mysqli para execução de consultas com prepared statements",
-            "time": "2018-07-09T12:43:24+00:00"
+            "time": "2018-10-14T00:34:02+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lucaasleaal/mysqlucas": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

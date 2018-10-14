@@ -9,7 +9,7 @@ Here you need to setup your DB connection.
 define('DB_HOSTNAME','localhost');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','');
-define('DB_DATABASE','csstrackr');
+define('DB_DATABASE','trackr');
 
 /*
 =================

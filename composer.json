@@ -1,6 +1,6 @@
 {
     "require": {
-        "lucaasleaal/mysqlucas": "^1.2"
+        "lucaasleaal/mysqlucas": "dev-master"
     },
     "autoload":{
     	"psr-4":{

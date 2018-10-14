@@ -1,12 +1,7 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Table `session`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `session` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NULL,
@@ -19,9 +14,6 @@ CREATE TABLE IF NOT EXISTS `session` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `action`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `action` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` ENUM('click', 'hover', 'check') NULL,
