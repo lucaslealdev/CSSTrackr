@@ -1,15 +1,17 @@
+# CSSTrackr
+
+![](https://github.com/lucaasleaal/csstrackr/blob/master/csstrackr-logo.svg)![](https://img.shields.io/badge/PHP-5.4%2B-ff69b4.svg) ![](https://img.shields.io/badge/MySQL-5.7%2B-ff69b4.svg) ![](https://img.shields.io/github/license/mashape/apistatus.svg)  [![GitHub issues](https://img.shields.io/github/issues/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/issues) [![GitHub forks](https://img.shields.io/github/forks/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/network) [![GitHub stars](https://img.shields.io/github/stars/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/stargazers) [![Twitter](https://img.shields.io/twitter/url/https/github.com/lucaasleaal/csstrackr.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Flucaasleaal%2Fcsstrackr) 
+
 ## Features
 
-- No javascript tracking: fast, elegant and adblock-proof solution;
-- Different actions: click, hover, check (a checkbox) and keep-hovering;
-- Descriptive: Every action to be tracked can have it's natural language description as *User clicked on search box* ;
+- Can track different actions: click, hover, check (a checkbox) and keep-hovering;
 - Automatically detects and log: Browser, screen orientation, screen size;
+- No javascript tracking: fast, elegant and adblock-proof solution;
+- Descriptive: Every action to be tracked can have it's natural language description as *User clicked on search box* ;
 - Ignore some agents as *googlebot* and *bingbot* ;
 - Ignore IP addresses with wildcard support;
 - Support table prefix so you can use the database you already have without problems;
 - Use sessions to track user navigation;
-
-![](https://img.shields.io/badge/PHP-5.4%2B-ff69b4.svg) ![](https://img.shields.io/badge/MySQL-5.7%2B-ff69b4.svg) ![](https://img.shields.io/github/license/mashape/apistatus.svg)  [![GitHub issues](https://img.shields.io/github/issues/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/issues) [![GitHub forks](https://img.shields.io/github/forks/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/network) [![GitHub stars](https://img.shields.io/github/stars/lucaasleaal/csstrackr.svg)](https://github.com/lucaasleaal/csstrackr/stargazers) [![Twitter](https://img.shields.io/twitter/url/https/github.com/lucaasleaal/csstrackr.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Flucaasleaal%2Fcsstrackr) 
 
 
 ## How to use
