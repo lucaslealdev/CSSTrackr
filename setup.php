@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 $finish = false;
 if (isset($_POST) && !empty($_POST)){
 	if (!isset($_POST['finish']) && isset($_POST['user'])){
@@ -140,7 +141,7 @@ if (isset($_POST) && !empty($_POST)){
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>CSSTrackr Setup Script</h1>
+	<h1><img src="csstrackr-logo.svg" style="height: 53px;vertical-align: middle;"> CSSTrackr Setup Script</h1>
 	<?php if(!$finish){?>
 	<div class="container tline">
 		<div class="row">

@@ -1,5 +1,6 @@
 <?php
-function ip_in_range($ip, $range) {
+declare(strict_types=1);
+function ip_in_range(string $ip, string $range) : bool {
     if (strpos($range, '/') == false)
         $range .= '/32';
 
@@ -12,7 +13,7 @@ function ip_in_range($ip, $range) {
     return (($ip_decimal & $netmask_decimal) == ($range_decimal & $netmask_decimal));
 }
 
-function _cloudflare_CheckIP($ip) {
+function _cloudflare_CheckIP(string $ip) : bool {
     $cf_ips = array(
         '199.27.128.0/21',
         '173.245.48.0/20',
@@ -37,7 +38,7 @@ function _cloudflare_CheckIP($ip) {
     } return $is_cf_ip;
 }
 
-function _cloudflare_Requests_Check() {
+function _cloudflare_Requests_Check() : bool {
     $flag = true;
 
     if(!isset($_SERVER['HTTP_CF_CONNECTING_IP']))   $flag = false;
@@ -47,14 +48,14 @@ function _cloudflare_Requests_Check() {
     return $flag;
 }
 
-function isCloudflare() {
+function isCloudflare() : bool {
     $ipCheck        = _cloudflare_CheckIP($_SERVER['REMOTE_ADDR']);
     $requestCheck   = _cloudflare_Requests_Check();
     return ($ipCheck && $requestCheck);
 }
 
 // Use when handling ip's
-function getRequestIP() {
+function getRequestIP() : string {
     $check = isCloudflare();
 
     if($check) {

@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 namespace trackr;
-
 
 class Action{
 
-// protected $db = null;
+	private $db;
 
 	function __construct($id,$action,$value){
 		$this->db = \mysqlucas::getInstance(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
@@ -55,9 +55,10 @@ class Action{
 				}
 				break;
 		}
+
 		if(!empty($this->db->error_mysqlucas)){
 			echo $this->db->error_mysqlucas;exit;
 		}
-
+		return $this;
 	}
 }

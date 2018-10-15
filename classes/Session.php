@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 namespace trackr;
-
 
 class Session{
 
-// protected $db = null;
+	private $db;
 
 	function __construct($ip){
 		$this->db = \mysqlucas::getInstance(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
@@ -24,5 +24,6 @@ class Session{
 		}else{
 			$this->id = $this->db->insert_id;
 		}
+		return $this;
 	}
 }

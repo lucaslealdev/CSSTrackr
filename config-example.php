@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
 =================
 Here you need to setup your DB connection.

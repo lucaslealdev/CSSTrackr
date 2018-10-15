@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-ini_set('session.cookie_lifetime', 3600*24*7);
-ini_set('session.gc_maxlifetime', 3600*24*7);
-@session_set_cookie_params(3600*24*7,"/"); //seven days
+ini_set('session.cookie_lifetime', strval(3600*24*7));
+ini_set('session.gc_maxlifetime', strval(3600*24*7));
+@session_set_cookie_params(strval(3600*24*7),"/"); //seven days
 @session_start();
 
 if (!file_exists('config.php')){
