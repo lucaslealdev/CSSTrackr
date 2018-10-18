@@ -376,11 +376,15 @@ if (isset($_POST) && !empty($_POST)){
 			<p>Put the code below before the <?php echo htmlentities("</head>")?> tag:</p>
 			<?php
 			$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-			$actual_link = str_replace('setup.php','csstrackr.css.php',$actual_link);
+			$css_link = str_replace('setup.php','csstrackr.css.php',$actual_link);
+			$admin_link = str_replace('setup.php','admin/',$actual_link);
 			?>
 			<code>
-				<?php echo htmlentities('<link rel="stylesheet" href="'.$actual_link.'" type="text/css" media="all">')?>
+				<?php echo htmlentities('<link rel="stylesheet" href="'.$css_link.'" type="text/css" media="all">')?>
 			</code>
+			<br>
+			<br>
+			<p>After that, you can access the <a href="<?= $admin_link?>" target="_blank">CSSTrackr panel (/admin/)</a></p>
 		</div>
 	</div>
 	<?php }?>
