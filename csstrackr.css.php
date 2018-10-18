@@ -41,7 +41,7 @@ if (isset($actions['click']) && !empty($actions['click'])){
 
 if (isset($actions['hover']) && !empty($actions['hover'])){
   foreach($actions['hover'] as $selector=>$value){?>
-    <?= $selector?>:hover::after {
+    <?= $selector?>:hover::before {
         content: url("index.php?action=hover&value=<?= urlencode($value)?>");
     }
 <?php }
