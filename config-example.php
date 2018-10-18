@@ -1,5 +1,4 @@
 <?php
-
 /*
 =================
 Here you need to setup your DB connection.

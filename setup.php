@@ -22,13 +22,29 @@ if (isset($_POST) && !empty($_POST)){
 		$_POST['prefix'] = preg_replace('/(?![a-z_])/m', '', strtolower($_POST['prefix']));
 		$config = str_replace("define('DB_PREFIX','');", "define('DB_PREFIX','".addslashes($_POST['prefix'])."');", $config);
 
+		mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_STRICT);
 		$my = mysqli_connect($_POST['host'],$_POST['user'],$_POST['pass'],$_POST['db']);
 		$sql = file_get_contents('database.sql');
 		$sql = str_replace("CREATE TABLE IF NOT EXISTS `", "CREATE TABLE IF NOT EXISTS `".$_POST['prefix'], $sql);
 		$sql = str_replace("REFERENCES `", "REFERENCES `".$_POST['prefix'], $sql);
 		$sql = str_replace("INDEX `", "INDEX `".$_POST['prefix'], $sql);
 		$sql = str_replace("CONSTRAINT `", "CONSTRAINT `".$_POST['prefix'], $sql);
-		mysqli_multi_query($my,$sql);
+		$sql = str_replace("TRUNCATE `", "TRUNCATE `".$_POST['prefix'], $sql);
+		$sql = str_replace("DROP TABLE IF EXISTS `", "DROP TABLE IF EXISTS `".$_POST['prefix'], $sql);
+		$sql = explode(';',$sql);
+		foreach($sql as $q){
+			if (empty(trim($q))) continue;
+			mysqli_query($my,$q);
+		}
+		mysqli_close($my);
+		$my = mysqli_connect($_POST['host'],$_POST['user'],$_POST['pass'],$_POST['db']);
+		$stmt = mysqli_prepare($my, "INSERT INTO `".$_POST['prefix']."admin`(`username`,`password`) VALUES(?,?)");
+		if ($stmt) {
+			$_POST['adm_pwd'] = password_hash($_POST['adm_pwd'],PASSWORD_DEFAULT);
+		    mysqli_stmt_bind_param($stmt, "ss", $_POST['adm_user'],$_POST['adm_pwd']);
+		    mysqli_stmt_execute($stmt);
+		    mysqli_stmt_close($stmt);
+		}
 		mysqli_close($my);
 
 		$actions = array();
@@ -43,6 +59,7 @@ if (isset($_POST) && !empty($_POST)){
 
 		$config = preg_replace('/\$actions = array\(\X*?;/m', '$actions = '.var_export($actions,TRUE).";", $config);
 		file_put_contents('config.php', $config);
+
 		$finish = true;
 	}
 }elseif (file_exists('config.php')){
@@ -63,9 +80,6 @@ if (isset($_POST) && !empty($_POST)){
 			background:#F4F4F4;
 			padding:10px;
 		}
-		.page{
-			height: 100%;
-		}
 		body h4{
 			margin-bottom: 30px;
 			margin-top:30px;
@@ -73,17 +87,18 @@ if (isset($_POST) && !empty($_POST)){
 		html .bright{
 			border-right: 1px solid silver;
 			background-color: #F4F4F4;
-			height: 100%;
 			display: block;
+			position: absolute;
+			height: 100%;
 		}
 		html .rb{
-			height: 100%;
+		float: right;
+		padding-bottom: 57px;
 		}
 		.tline{
 			border:1px solid silver;
 		}
 		.tline .row{
-			height: 500px;
 			position: relative;
 		}
 		body h1{
@@ -125,12 +140,13 @@ if (isset($_POST) && !empty($_POST)){
 
 		/* xs sm */
 		@media (max-width: 991px) {
-		  .bright{height: auto;border:none;}
+		  html .bright{border:none;position: relative;height: auto;}
 		  .bright li{display:inline-block;width:auto;border-right: 1px solid silver;padding-left:10px;padding-right: 20px;}
 		  .bright ul{padding:0px;}
-		  .tline .row{height: auto;}
+		  .tline .row{}
 		  html .rb{
 		  	padding-bottom: 100px;
+		  	float: none;
 		  }
 		}
 	</style>
@@ -272,6 +288,18 @@ if (isset($_POST) && !empty($_POST)){
 						</fieldset>
 
 						<button type="button" id="more" onclick="addmore()" class="btn btn-success">+</button>
+						<br>
+						<br>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-sm-12">
+									<input type="text" required name="adm_user" placeholder="admin username" class="form-control" maxlength="30" pattern="^[a-z]*$" title="Only lowercase letters" />
+								</div>
+								<div class="col-sm-12">
+									<input type="text" required name="adm_pwd" placeholder="*visible* admin password" class="form-control" maxlength="30" />
+								</div>
+							</div>
+						</div>
 
 						<div class="bar">
 							<?php if(empty($errors)){?><button class="btn btn-default" onclick="step('#second');" type="button" id="btn-test">Back</button><?php }?>
@@ -347,11 +375,15 @@ if (isset($_POST) && !empty($_POST)){
 			<p>Put the code below before the <?php echo htmlentities("</head>")?> tag:</p>
 			<?php
 			$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-			$actual_link = str_replace('setup.php','csstrackr.css.php',$actual_link);
+			$css_link = str_replace('setup.php','csstrackr.css.php',$actual_link);
+			$admin_link = str_replace('setup.php','admin/',$actual_link);
 			?>
 			<code>
-				<?php echo htmlentities('<link rel="stylesheet" href="'.$actual_link.'" type="text/css" media="all">')?>
+				<?php echo htmlentities('<link rel="stylesheet" href="'.$css_link.'" type="text/css" media="all">')?>
 			</code>
+			<br>
+			<br>
+			<p>After that, you can access the <a href="<?= $admin_link?>" target="_blank">CSSTrackr panel (/admin/)</a></p>
 		</div>
 	</div>
 	<?php }?>
