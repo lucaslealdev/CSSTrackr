@@ -36,6 +36,7 @@ if (isset($actions['click']) && !empty($actions['click'])){
   /* <style> */
     <?= $selector?>:active::after {
         content: url("index.php?action=click&value=<?= urlencode($value)?>");
+        display: none;
     }
 <?php }
 }
@@ -44,6 +45,7 @@ if (isset($actions['hover']) && !empty($actions['hover'])){
   foreach($actions['hover'] as $selector=>$value){?>
     <?= $selector?>:hover::before {
         content: url("index.php?action=hover&value=<?= urlencode($value)?>");
+        display: none;
     }
 <?php }
 }
@@ -52,6 +54,7 @@ if (isset($actions['check']) && !empty($actions['check'])){
   foreach($actions['check'] as $selector=>$value){?>
     <?= $selector?>:checked {
         content: url("index.php?action=check&value=<?= urlencode($value)?>");
+        display: none;
     }
 <?php }
 }
@@ -93,18 +96,21 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @supports (-webkit-appearance:none) and (not (-ms-ime-align:auto)){
     body::before {
         content: url("index.php?action=browser&value=chrome");
+        display: none;
     }
 }
 
 @supports (-moz-appearance:meterbar) {
     body::before {
         content: url("index.php?action=browser&value=firefox");
+        display: none;
     }
 }
 
 @supports (-ms-ime-align:auto) {
     body::before {
         content: url("index.php?action=browser&value=edge")
+        display: none;
     }
 }
 
@@ -113,12 +119,14 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (orientation: portrait) {
     html::after {
         content: url("index.php?action=orientation&value=portrait");
+        display: none;
     }
 }
 
 @media (orientation: landscape) {
     html::after {
         content: url("index.php?action=orientation&value=landscape");
+        display: none;
     }
 }
 
@@ -128,6 +136,7 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (max-width: 767px) {
   body::after {
       content: url("index.php?action=viewport&value=xs");
+      display: none;
   }
 }
 
@@ -135,6 +144,7 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 768px) and (max-width: 991px) {
    body::after {
        content: url("index.php?action=viewport&value=sm");
+       display: none;
    }
 }
 
@@ -142,6 +152,7 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 992px) and (max-width: 1199px) {
   body::after {
       content: url("index.php?action=viewport&value=md");
+      display: none;
   }
 }
 
@@ -149,6 +160,7 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 1200px) and (max-width: 1920px){
   body::after {
       content: url("index.php?action=viewport&value=lg");
+      display: none;
   }
 }
 
@@ -156,5 +168,6 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 1921px) {
   body::after {
       content: url("index.php?action=viewport&value=xlg");
+      display: none;
   }
 }
