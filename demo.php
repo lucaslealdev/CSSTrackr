@@ -11,8 +11,5 @@
 	<button id="subscribe">Subscribe</button><br><br>
 	<button id="unsub">Unsubscribe</button><br><br>
 	<label><input type="checkbox">I'm sure</label><br><br>
-	<pre>
-		<?php session_start();print_r($_SESSION);?>
-	</pre>
 </body>
 </html>

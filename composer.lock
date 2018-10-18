@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucaasleaal/mysqlucas.git",
-                "reference": "99ec25c4694ac83c19827cea44eb9ddca8ee45dd"
+                "reference": "23e7cf75b7ce8902175a6433cbec4b7fc8939a7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucaasleaal/mysqlucas/zipball/99ec25c4694ac83c19827cea44eb9ddca8ee45dd",
-                "reference": "99ec25c4694ac83c19827cea44eb9ddca8ee45dd",
+                "url": "https://api.github.com/repos/lucaasleaal/mysqlucas/zipball/23e7cf75b7ce8902175a6433cbec4b7fc8939a7b",
+                "reference": "23e7cf75b7ce8902175a6433cbec4b7fc8939a7b",
                 "shasum": ""
             },
             "type": "library",
@@ -28,7 +28,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Classe mysqli para execução de consultas com prepared statements",
-            "time": "2018-10-14T00:34:02+00:00"
+            "time": "2018-10-15T22:21:09+00:00"
         }
     ],
     "packages-dev": [],

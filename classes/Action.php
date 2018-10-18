@@ -6,7 +6,7 @@ class Action{
 
 	private $db;
 
-	function __construct($id,$action,$value){
+	function __construct(int $id, string $action,string $value){
 		$this->db = \mysqlucas::getInstance(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 		switch ($action) {
 			case 'browser':

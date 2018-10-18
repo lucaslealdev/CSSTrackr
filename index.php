@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
@@ -21,9 +22,9 @@ require('functions.php');
 $_SERVER['REMOTE_ADDR'] = getRequestIP();
 
 if (isset($_GET) && !empty($_GET)){
-	if (!isset($_SESSION[S])){
+	if (!isset($_SESSION[S]['id'])){
 		/* new session */
-		$_SESSION[S] = array();
+		if (!isset($_SESSION[S])) $_SESSION[S] = array();
 
 		/*create the session @ database*/
 		$session = new \trackr\Session($_SERVER['REMOTE_ADDR']);
