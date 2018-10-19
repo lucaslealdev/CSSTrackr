@@ -167,7 +167,7 @@ class Stats{
 		count(*) as 'count'
 		from ".DB_PREFIX."session
 		where created BETWEEN DATE_SUB(now(), interval 1 week) AND now()
-		group by browser");
+		group by browser order by count(*) desc");
 
 		if (empty($data)) $data = array();
 
@@ -179,7 +179,7 @@ class Stats{
 		count(*) as 'count'
 		from ".DB_PREFIX."session
 		where created BETWEEN DATE_SUB(now(), interval 1 week) AND now()
-		group by viewport_width");
+		group by viewport_width order by count(*) desc");
 
 		if (empty($data)) $data = array();
 
