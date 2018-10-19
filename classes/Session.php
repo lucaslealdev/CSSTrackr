@@ -42,7 +42,9 @@ class Session{
 			FROM ".DB_PREFIX."session
 			left join ".DB_PREFIX."action on ".DB_PREFIX."action.session_id=".DB_PREFIX."session.id
 			WHERE ".DB_PREFIX."session.created between curdate() and now()
-			group by ".DB_PREFIX."session.id"
+			group by ".DB_PREFIX."session.id
+			order by n_actions desc
+			limit 2000"
 		);
 
 		if (empty($result)) $result = array();
