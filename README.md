@@ -6,6 +6,10 @@ User tracking system without javascript designed to work as a plug-and-play css 
 
 [Access "php-legacy" branch for PHP5 support](/lucaasleaal/CSSTrackr/tree/php-legacy)
 
+Quick demo:
+
+[![Quick demo](https://img.youtube.com/vi/bRHleCzlXwo/0.jpg)](https://www.youtube.com/watch?v=bRHleCzlXwo)
+
 ## Features
 
 - Can track different actions: click, hover, check (a checkbox) and keep-hovering;
