@@ -36,7 +36,11 @@ if (isset($actions['click']) && !empty($actions['click'])){
   /* <style> */
     <?= $selector?>:active::after {
         content: url("index.php?action=click&value=<?= urlencode($value)?>");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 <?php }
 }
@@ -45,7 +49,11 @@ if (isset($actions['hover']) && !empty($actions['hover'])){
   foreach($actions['hover'] as $selector=>$value){?>
     <?= $selector?>:hover::before {
         content: url("index.php?action=hover&value=<?= urlencode($value)?>");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 <?php }
 }
@@ -54,7 +62,11 @@ if (isset($actions['check']) && !empty($actions['check'])){
   foreach($actions['check'] as $selector=>$value){?>
     <?= $selector?>:checked {
         content: url("index.php?action=check&value=<?= urlencode($value)?>");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 <?php }
 }
@@ -96,21 +108,33 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @supports (-webkit-appearance:none) and (not (-ms-ime-align:auto)){
     body::before {
         content: url("index.php?action=browser&value=chrome");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 }
 
-@supports (-moz-appearance:meterbar) {
+@media screen and (min--moz-device-pixel-ratio:0) {
     body::before {
         content: url("index.php?action=browser&value=firefox");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 }
 
 @supports (-ms-ime-align:auto) {
     body::before {
-        content: url("index.php?action=browser&value=edge")
-        display: none;
+        content: url("index.php?action=browser&value=edge");
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 }
 
@@ -119,14 +143,22 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (orientation: portrait) {
     html::after {
         content: url("index.php?action=orientation&value=portrait");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 }
 
 @media (orientation: landscape) {
     html::after {
         content: url("index.php?action=orientation&value=landscape");
-        display: none;
+        display: block;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+        padding: 0px;
     }
 }
 
@@ -136,7 +168,11 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (max-width: 767px) {
   body::after {
       content: url("index.php?action=viewport&value=xs");
-      display: none;
+      display: block;
+      margin: 0px;
+      width: 0px;
+      height: 0px;
+      padding: 0px;
   }
 }
 
@@ -144,7 +180,11 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 768px) and (max-width: 991px) {
    body::after {
        content: url("index.php?action=viewport&value=sm");
-       display: none;
+       display: block;
+       margin: 0px;
+       width: 0px;
+       height: 0px;
+       padding: 0px;
    }
 }
 
@@ -152,7 +192,11 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 992px) and (max-width: 1199px) {
   body::after {
       content: url("index.php?action=viewport&value=md");
-      display: none;
+      display: block;
+      margin: 0px;
+      width: 0px;
+      height: 0px;
+      padding: 0px;
   }
 }
 
@@ -160,7 +204,11 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 1200px) and (max-width: 1920px){
   body::after {
       content: url("index.php?action=viewport&value=lg");
-      display: none;
+      display: block;
+      margin: 0px;
+      width: 0px;
+      height: 0px;
+      padding: 0px;
   }
 }
 
@@ -168,6 +216,10 @@ if (isset($actions['hoverhold']) && !empty($actions['hoverhold'])){
 @media (min-width: 1921px) {
   body::after {
       content: url("index.php?action=viewport&value=xlg");
-      display: none;
+      display: block;
+      margin: 0px;
+      width: 0px;
+      height: 0px;
+      padding: 0px;
   }
 }
