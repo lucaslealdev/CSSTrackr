@@ -28,6 +28,8 @@ class Stats{
 			) as this_week");
 
 		$data = $data[0];
+		$data['this_weekn'] = $data['this_week']===0?1:$data['this_week'];
+		$data['last_weekn'] = $data['last_week']===0?1:$data['last_week'];
 		$data['this_week'] = $data['this_week']===0?1:$data['this_week'];
 		$data['last_week'] = $data['last_week']===0?1:$data['last_week'];
 
@@ -74,6 +76,8 @@ class Stats{
 			) as this_week");
 
 		$data = $data[0];
+		$data['this_weekn'] = $data['this_week']===0?1:$data['this_week'];
+		$data['last_weekn'] = $data['last_week']===0?1:$data['last_week'];
 		$data['this_week'] = $data['this_week']===0?1:$data['this_week'];
 		$data['last_week'] = $data['last_week']===0?1:$data['last_week'];
 
@@ -107,7 +111,7 @@ class Stats{
 	function actions_week_compare_list() : array {
 		$data = $this->db->mysqli_prepared_query("SELECT
 		A.value,
-		count(A.value) as this_week,
+		count(*) as this_week,
 		(
 			SELECT
 			count(*)
@@ -124,6 +128,8 @@ class Stats{
 		order by this_week desc");
 
 		foreach($data as &$linha){
+			$linha['this_weekn'] = $linha['this_week']===0?1:$linha['this_week'];
+			$linha['last_weekn'] = $linha['last_week']===0?1:$linha['last_week'];
 			$linha['this_week'] = $linha['this_week']===0?1:$linha['this_week'];
 			$linha['last_week'] = $linha['last_week']===0?1:$linha['last_week'];
 
@@ -158,7 +164,7 @@ class Stats{
 	function browsers() : array {
 		$data = $this->db->mysqli_prepared_query("SELECT
 		case when browser is null then 'N/A' else browser END as 'browser',
-		count(browser) as 'count'
+		count(*) as 'count'
 		from ".DB_PREFIX."session
 		where created BETWEEN DATE_SUB(now(), interval 1 week) AND now()
 		group by browser");
@@ -170,7 +176,7 @@ class Stats{
 	function viewports() : array {
 		$data = $this->db->mysqli_prepared_query("SELECT
 		case when viewport_width is null then 'N/A' else viewport_width END as 'viewport_width',
-		count(viewport_width) as 'count'
+		count(*) as 'count'
 		from ".DB_PREFIX."session
 		where created BETWEEN DATE_SUB(now(), interval 1 week) AND now()
 		group by viewport_width");

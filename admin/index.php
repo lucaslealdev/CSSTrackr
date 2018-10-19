@@ -8,8 +8,8 @@ $browser_race = $stats->browsers();
 $viewport_race = $stats->viewports();
 $action_race = $stats->actions_week_compare_list();
 
-$persession_lw = $actions['last_week']/$sessions['last_week'];
-$persession_tw = $actions['this_week']/$sessions['this_week'];
+$persession_lw = $actions['last_weekn']/$sessions['last_weekn'];
+$persession_tw = $actions['this_weekn']/$sessions['this_weekn'];
 $actions_per_session = array(
 	'variation'=> round(100*$persession_tw/$persession_lw-100,2),
 	'last_week'=>round($persession_lw,2),
