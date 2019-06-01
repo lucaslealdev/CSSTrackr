@@ -23,7 +23,7 @@ require('functions.php');
 /*get real user IP*/
 $_SERVER['REMOTE_ADDR'] = getRequestIP();
 
-if (isset($_GET) && !empty($_GET)){
+if (isset($_GET) && !empty($_GET) && isset($_GET['action']) && isset($_GET['value'])){
 	if (!isset($_SESSION[S]['id'])){
 		/* new session */
 		if (!isset($_SESSION[S])) $_SESSION[S] = array();
