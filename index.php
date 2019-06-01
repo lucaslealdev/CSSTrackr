@@ -23,6 +23,18 @@ require('functions.php');
 /*get real user IP*/
 $_SERVER['REMOTE_ADDR'] = getRequestIP();
 
+if(isset($_SERVER['HTTP_USER_AGENT']) && in_array(strtolower($_SERVER['HTTP_USER_AGENT']),$banned_agents)){
+  exit;
+}else if (in_array($_SERVER['REMOTE_ADDR'],$banned_ips)){
+  exit;
+} else {
+  foreach($banned_ips as $ip) {
+    if($ip==substr($_SERVER['REMOTE_ADDR'], 0,strlen($ip))){
+      exit;
+    }
+  }
+}
+
 if (isset($_GET) && !empty($_GET) && isset($_GET['action']) && isset($_GET['value'])){
 	if (!isset($_SESSION[S]['id'])){
 		/* new session */
