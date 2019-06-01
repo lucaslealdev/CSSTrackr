@@ -188,8 +188,8 @@ if (isset($_POST) && !empty($_POST)){
 								define('PHP_VERSION','3.0.0');
 							}
 						}
-						if (version_compare(PHP_VERSION, '5.4.0', '<')) {
-						    $errors['php_version'] = 'Your PHP version is '.PHP_VERSION.' but it should be at least 5.4.0';
+						if (version_compare(PHP_VERSION, '7.0.0', '<')) {
+						    $errors['php_version'] = 'Your PHP version is '.PHP_VERSION.' but it should be at least 7.0.0';
 						}
 						if (!function_exists('mysqli_query')){
 							$errors['mysqli'] = 'You don\' have mysqli extension enabled. You need to enable <strong>mysqli</strong>.';
@@ -204,7 +204,7 @@ if (isset($_POST) && !empty($_POST)){
 						<ol>
 							<li>Config example ... <?php echo isset($errors['configexample'])?'<span class="notok">'.$errors['configexample'].'</span>':'<span class="ok">OK</span>'?></li>
 							<li>Composer setup ... <?php echo isset($errors['composer'])?'<span class="notok">'.$errors['composer'].'</span>':'<span class="ok">OK</span>'?></li>
-							<li>PHP 5.4+ ... <?php echo isset($errors['php_version'])?'<span class="notok">'.$errors['php_version'].'</span>':'<span class="ok">OK</span>'?></li>
+							<li>PHP 7.0+ ... <?php echo isset($errors['php_version'])?'<span class="notok">'.$errors['php_version'].'</span>':'<span class="ok">OK</span>'?></li>
 							<li>mysqli extension ... <?php echo isset($errors['mysqli'])?'<span class="notok">'.$errors['mysqli'].'</span>':'<span class="ok">OK</span>'?></li>
 							<li>Write permissions ... <?php echo isset($errors['write'])?'<span class="notok">'.$errors['write'].'</span>':'<span class="ok">OK</span>'?></li>
 						</ol>
