@@ -16,11 +16,8 @@ if(isset($_SERVER['HTTP_USER_AGENT']) && in_array(strtolower($_SERVER['HTTP_USER
   exit;
 } else {
   foreach($banned_ips as $ip) {
-    $ip = str_replace(".", "\\.", $ip);
-    $ip = str_replace("*", ".*", $ip);
-    $ip = "/^".$ip."/";
-    if(preg_match($ip, $_SERVER['REMOTE_ADDR'])){
-      echo "/*blocked ip range*/";
+    if($ip==substr($_SERVER['REMOTE_ADDR'], 0,strlen($ip))){
+      echo "/*blocked ip by like*/";
       exit;
     }
   }
