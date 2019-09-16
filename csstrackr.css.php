@@ -33,7 +33,10 @@ if (isset($actions['click']) && !empty($actions['click'])){
   /* <style> */
     <?= $selector?>:active::after {
         content: url("index.php?action=click&value=<?= urlencode($value)?>");
-        display: block;
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
         margin: 0px;
         width: 0px;
         height: 0px;
@@ -46,7 +49,10 @@ if (isset($actions['hover']) && !empty($actions['hover'])){
   foreach($actions['hover'] as $selector=>$value){?>
     <?= $selector?>:hover::before {
         content: url("index.php?action=hover&value=<?= urlencode($value)?>");
-        display: block;
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
         margin: 0px;
         width: 0px;
         height: 0px;
